@@ -1,0 +1,96 @@
+:root {
+  /* Define colors and sizes here for quick reference */
+  --bgColor:      #666;
+  --contColor:    #bbb;
+  --titleColor:   #111;
+  --labelColor:   #029;
+  --axisColor:    #006;
+  --barColor:     #49e;
+  --overlayColor: #228;
+  --tipColor:     #aa5;
+  --contWidth:     900px;   /*Container - Compare with .js file*/
+  --contHeight:    550px;   /*Container - Compare with .js file*/
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial';
+  background-color: var(--bgColor);
+}
+
+.main .container {
+  width: var(--contWidth);
+  height: var(--contHeight);
+  background-color: var(--contColor);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px 10px 0px;
+  align-self: center;
+  position: relative;
+}
+
+@media (min-width: 500px) {
+  .main .container {
+    box-shadow: 2px 2px 20px;
+  }
+}
+
+.main .container #title {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600;
+  color: rgb(40, 40, 40);
+}
+
+.main .container .visHolder {
+  position: absolute;
+  top: 5em;
+}
+
+#tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  font: 10px;
+  background: var(--tipColor);
+  border-radius: 8px;
+  opacity: 0;
+  /* padding: 10px; */
+}
+
+.bar {
+  fill: var(--barColor)
+}
+
+.overlay {
+  position: absolute;
+  background: var(--overlayColor);
+  pointer-events: none;
+}
+
+#y-axis path, #x-axis path {
+  stroke: var(--axisColor);
+  stroke-width: 1;
+  /* fill: none; */
+}
+
+#y-axis text, #x-axis text {
+  color: var(--axisColor);
+}
+
+.Label {
+  font-size: 1.0em;
+  font-weight: bold;
+  fill: var(--labelColor);
+}
