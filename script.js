@@ -51,11 +51,8 @@ svgContainer
 // ========================================
 // Define the tooltip that will show when mouse is on a bar:
 // ========================================
-const tooltip = d3.select('.visHolder')
-  .append('div')
+const tooltip = d3.select('.tooltip')
     .attr('id', 'tooltip')
-    .style('width', tipWidth)
-    .style('height', tipHeight)
     .style('opacity', 0);
 
 // ========================================
@@ -187,7 +184,6 @@ fetch(dataFile)                                       // Retrieve the remote fil
             .style('width', barWidth + 'px')
             .style('opacity', 0.9)
             .style('left', i * barWidth + 'px')
-            // .style('top', height - d + 'px')
             .style('bottom', vMargin + 'px')
             .style('transform', 'translateX(' + hMargin + 'px)');
 
@@ -215,8 +211,9 @@ fetch(dataFile)                                       // Retrieve the remote fil
           tooltip
             .html( years[i] + '<br>' + '$' + GDP[i] + ' ' + yUnits )
             .attr('data-date', data[i][0] )                    // --------    User Stories #13: property data-date
-            .style('left', hMargin + Math.min(width - tipWidth, Math.max(0, i * barWidth - tipWidth / 2)) + 'px')
-            .style('bottom', vMargin + 10 + Math.max(d , 10) + 'px');
+            .style('width', tipWidth)
+            .style('left', event.pageX - tipWidth/2 + 'px')
+            .style('top', event.pageY - 60  + 'px');
         })
 
 
